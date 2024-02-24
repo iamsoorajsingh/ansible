@@ -1,0 +1,15 @@
+---
+  - name: install and start the services 
+    hosts:  all
+
+    tasks:  
+    - name: Installing ngnix
+      yum:
+        name: ngnix
+        state: present 
+    
+    -name: Starting the ngnix service
+    service:
+      name: ngnix
+      state:  started
+      enabled:  true
