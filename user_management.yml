@@ -1,0 +1,19 @@
+---
+- name: user management 
+  hosts: all
+  tasks:
+  - name: user creation 
+    user:             #using user module
+      name: suraj
+      comment: new user for production ##optional
+      home:                           ##if you want to give custom path ,by defalut it will create to /home
+      shell:  /bin/bash
+      groups:  QA ,Production,root 
+      update_password:  always  ## 
+      password: "{{'abcd123' | password_hash('sha512')}}"   ## this password will be encrypted 
+
+      state: absent  ##to delet the user 
+      remove: yes     ## remove the data of user 
+
+
+

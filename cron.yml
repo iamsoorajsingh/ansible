@@ -1,0 +1,34 @@
+---
+- name: cronjob
+  hosts: all
+
+  tasks:
+  - name: creating a cronjob
+    cron: 
+      name: Run a test script 
+      minute: 30
+      hour: 18
+      day:  15  
+      month:  "*" # every month
+      weekday: "*" # every week
+      user: suraj
+      job:  /scriptpath or any command 
+      ###diasbled the cronjob 
+      diabled: yes
+
+
+      #ansible-playbook cron.yml
+
+  - name: Remove a cronjob
+    cron: 
+      name: Run a test script     # it will check Run a script is there or not in crontab
+      state: absent
+##to set the env varibale 
+  - name: setting a cron job 
+    cron:
+      name: PATH 
+      env: yes
+      user: suraj
+      job:  /tmp/script 
+      insertbefore: PATH
+#:\Automation\TRNRFSH-master\ansible\cron.yml

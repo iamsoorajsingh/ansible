@@ -1,0 +1,22 @@
+---
+- name: File module 
+  hosts: all
+
+  tasks:
+  - name: creating a file 
+    file:
+      path: /tmp/newfile.txt
+      state:  touch     # to create a file if want to delete then stste will be absent 
+      owner:  suraj
+      group:  suraj
+      mode:   u=rwx,g=rw,o=rw
+
+
+  - name: Creating a directory
+    file:
+    path: /tmp/myfolder
+    state:  directory
+    owner:  suraj
+    group: suraj
+
+  

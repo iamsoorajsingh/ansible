@@ -1,0 +1,18 @@
+---
+- name: Run a script
+  hosts: all
+
+  tasks:
+  - name: Run script
+    shell: /absolute path  >>test.log   #test.log will redirect the ourput of scri[pt if it is there 
+
+    #this args is used to handle the ouput of the scri[t that optional for that reason created a file thorogh ansible if file is npot there
+    args:
+    chdir: /tmp/script/
+    create: test.log
+
+
+    ###if we run the script to remote node from ansible ..
+
+    
+  
