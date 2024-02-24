@@ -1,0 +1,14 @@
+---
+- name: Firewall changes
+  hosts:  all
+  tasks:
+  - name: Enable a firelwall service 
+    firelwalld: 
+      service:  ngnix #ngnix services 
+      permanent:  true  #chnages would pe permament
+      state:  enabled   # sevice state shoukd be enabled or disabled
+  
+  - name: Reload the firewall service             #will reload the firewall services becusae of chnages made in ngnix
+    service:
+      name: firewalld
+      state:  reloaded
