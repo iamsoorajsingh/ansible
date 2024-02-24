@@ -1,0 +1,31 @@
+ansible-playbook ansible_playbook.yml
+
+
+ssh-keygen
+ssh-copy-id suraj@ip_of_remote_machine
+
+=============================================================================================
+ansible Ad Hoc tasks:
+
+ansible <host-pattern> -m <module> -a "<module-argument>" -u <username > -b
+ansible myserver -m command -a "df-h"               command is the module here 
+
+ansible localhost -m ping 
+ansbile all -m ping                 #all means whatever ip's are in hostfile 
+ansible ip -m ping 
+
+firing command as a paul user :
+
+ansible ip -m copy -a "src=home/paul.txt dest=/tmp/script"   ## copy the text file 
+it will error if dest folder do not have the permission to write as a paul user ...
+
+ansible ip -m copy -a "src=home/paul.txt dest=/tmp/script" -b           #become true  -->it will run as paul user now 
+error!!!--> missing pawword 
+
+
+ansible ip -m copy -a "src=home/paul.txt dest=/tmp/script" -b  --ask-become-pass    ## it will prompt fpr the password 
+
+ file has been copied .......
+
+
+ansible ip -m copy -a "src=home/paul.txt dest=/tmp/script mode =0777" -b  --ask-become-pass   ##now it has 777 permission to file 
