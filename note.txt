@@ -29,3 +29,16 @@ ansible ip -m copy -a "src=home/paul.txt dest=/tmp/script" -b  --ask-become-pass
 
 
 ansible ip -m copy -a "src=home/paul.txt dest=/tmp/script mode =0777" -b  --ask-become-pass   ##now it has 777 permission to file 
+
+
+TAGS:
+
+tasks:  
+    - name: Installing ngnix
+      yum:
+        name: ngnix
+        state: present 
+      tags: install-ngnix       #ansible-playbook playbook_name.yml --list-tags                 --> list all tags in the playbook
+                                 # ansible-playbook playbook_name.yml -t -i install-ngnix       -->to runthe particular tag 
+                                 #ansible-playbook playbook_name.yml --skip-tags install-ngnix  --->expect tag mentions all will run 
+    

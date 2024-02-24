@@ -7,9 +7,13 @@
       yum:
         name: ngnix
         state: present 
+      tags: install-ngnix       #ansible-playbook playbook_name.yml --list-tags                 --> list all tags in the playbook
+                                 # ansible-playbook playbook_name.yml -t -i install-ngnix       -->to runthe particular tag 
+                                 #ansible-playbook playbook_name.yml --skip-tags install-ngnix  --->expect tag mentions all will run 
     
     -name: Starting the ngnix service
     service:
       name: ngnix
       state:  started
       enabled:  true
+    tags: run-ngnix
