@@ -1,6 +1,7 @@
 ---
 - name: Firewall changes
   hosts:  all
+  become: true       #as a previlages user 
   tasks:
   - name: Enable a firelwall service 
     firelwalld: 
