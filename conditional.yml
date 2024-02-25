@@ -1,0 +1,18 @@
+---
+  - name: install and start the services 
+    hosts:  all
+
+    tasks:  
+    - name: Installing ngnix
+      yum:
+        name: ngnix
+        state: present 
+      tags: install-ngnix 
+      when: ansible_os_family=="RedHat"
+  
+    - name: Installing ngnix
+      apt:
+        name: ngnix
+        state: present 
+      tags: install-ngnix 
+      when: ansible_os_family=="Ubuntu"
