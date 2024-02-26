@@ -1,0 +1,16 @@
+---
+  - name: user management
+    hosts:  all
+  
+  - tasks:
+    - name: User_creation
+      user:
+        name: "{{item}}"
+        home: /home/
+        shell:  /bin/bash
+      loop:
+        suraj 
+        niraj 
+        roshan
+
+       
